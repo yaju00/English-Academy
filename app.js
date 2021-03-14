@@ -67,13 +67,19 @@ app.post('/signin',async(req,res)=>{
    const email=req.body.email;
    const password=req.body.password;
    const user= await User.findOne({email:email});
-   if(user.password===password){
-       res.status(201).render('successfullogin')
+   if(user!==null){
+    if(user.password===password){
+        res.status(201).render('successfullogin')
+    }
+    else{
+        res.send('invalid login details')
+    }
    }
    else{
-       res.send('invalid login details')
+    res.send('first register yourself')
    }
-    console.log(user.password);
+  
+    console.log(user.email);
 })  
 app.post('/signup',(req,res)=>{
     const myData=new User(req.body);
