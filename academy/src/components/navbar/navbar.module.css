@@ -1,0 +1,15 @@
+#topbar{
+    z-index: 100;
+    
+}
+.logindiv a{
+    text-decoration: none;
+    color: rgb(203, 204, 123);
+    margin: 5px;
+}
+.logindiv a:hover{
+    
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    
+}
