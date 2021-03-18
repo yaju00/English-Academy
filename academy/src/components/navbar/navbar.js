@@ -18,17 +18,17 @@ class Navbar extends Component{
               <li onClick={this.props.statusChangerHome}className="navbar-item">
               <Link to="/" className="nav-link">Home</Link>
               </li>
-              <li onClick={this.props.statusChangerContact}className="navbar-item">
+              <li onClick={this.props.statusChangerAbout}className="navbar-item">
               <Link to="/about" className="nav-link">About Us</Link>
               </li>
               <li onClick={this.props.statusChangerContact}className="navbar-item">
               <Link to="/contact" className="nav-link">Contact Us</Link>
               </li>
             </ul>
-            <div className={styles.logindiv}onClick={this.props.statusChangerContact} >
+            <div className={styles.logindiv}onClick={this.props.statusChangerLogin} >
               <Link to="/login" >Login</Link>
             </div>
-            <div className={styles.logindiv} onClick={this.props.statusChangerContact}>
+            <div className={styles.logindiv} onClick={this.props.statusChangerSignup}>
               <Link to="/signup" >Signup</Link>
             </div>
             </div>

@@ -17,36 +17,80 @@ class App extends Component {
     this.state={
       firstImageStatus:true,
       opprortunitiesStatus:true,
+      loginStatus:false,
+      signupStatus:false,
+      aboutStatus:false,
+      contactStatus:false,
     }
   }
   statusChangerContact=()=>{
     this.setState({firstImageStatus:false});
     this.setState({opprortunitiesStatus:false});
+    this.setState({aboutStatus:false});
+    this.setState({contactStatus:true});
+    this.setState({loginStatus:false});
+    this.setState({signupStatus:false});
     
   }
   statusChangerHome=()=>{
     this.setState({firstImageStatus:true});
     this.setState({opprortunitiesStatus:true});
+    this.setState({aboutStatus:false});
+    this.setState({contactStatus:false});
+    this.setState({loginStatus:false});
+    this.setState({signupStatus:false});
     
+  }
+  statusChangerLogin=()=>{
+    this.setState({firstImageStatus:false});
+    this.setState({opprortunitiesStatus:false});
+    this.setState({aboutStatus:false});
+    this.setState({contactStatus:false});
+    this.setState({loginStatus:true});
+    this.setState({signupStatus:false});
+  }
+  statusChangerSignup=()=>{
+    this.setState({firstImageStatus:false});
+    this.setState({opprortunitiesStatus:false});
+    this.setState({aboutStatus:false});
+    this.setState({contactStatus:false});
+    this.setState({loginStatus:false});
+    this.setState({signupStatus:true});
+  }
+
+  statusChangerAbout=()=>{
+    this.setState({firstImageStatus:false});
+    this.setState({opprortunitiesStatus:false});
+    this.setState({aboutStatus:true});
+    this.setState({contactStatus:false});
+    this.setState({loginStatus:false});
+    this.setState({signupStatus:false});
   }
   render(){
     return (
       <Router >
         <Navbar statusChangerContact={this.statusChangerContact} 
-        statusChangerHome={this.statusChangerHome}/>
+        statusChangerHome={this.statusChangerHome}
+        statusChangerLogin={this.statusChangerLogin}
+        statusChangerSignup={this.statusChangerSignup}
+        statusChangerAbout={this.statusChangerAbout}/>
         <br/>
         <img style={{display:this.state.firstImageStatus?'block':'none'}} src={imgback} className={styles.imgback}/>
-        <div className={styles.maindiv}>
-          <Route exact path='/contact'><Contact /></Route>
+        <div>
+          <Route exact path='/contact'><Contact displayStatus={this.state.contactStatus}/></Route>
         </div>
-        <div className={styles.maindiv}>
-          <Route exact path='/about'><About /></Route>
+        <div >
+          <Route exact path='/about'><About displayStatus={this.state.aboutStatus}/></Route>
         </div>
-        <div className={styles.maindiv}>
+        <div>
           <Route path='/'></Route>
         </div>
-          <Route exact path="/login"  component ={Login}/>
-          <Route exact path="/signup"  component ={Signup}/>
+        <div>
+          <Route path='/login'><Login displayStatus={this.state.loginStatus}/></Route>
+        </div>
+        <div>
+          <Route path='/signup'><Signup displayStatus={this.state.signupStatus} /></Route>
+        </div>
         <Opprortunities displayStatus={this.state.opprortunitiesStatus} />
       </Router>
     );

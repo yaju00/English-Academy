@@ -2,4 +2,9 @@
     width:50%;
     margin-left: 50%;
     transform: translate(-50%,0);
+    color: black;
+}
+#loginbutton{
+    margin-left: 50%;
+    transform: translate(-50%,0);
 }
