@@ -9,6 +9,7 @@ import Login from './components/navbar/login';
 import Signup from './components/navbar/signup';
 import imgback from './images/img1.jpg';
 import Opprortunities from './components/opportunities/opportunities';
+import Footer from './components/footer/footer'
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       signupStatus:false,
       aboutStatus:false,
       contactStatus:false,
+      footerStatus:true,
     }
   }
   statusChangerContact=()=>{
@@ -30,6 +32,7 @@ class App extends Component {
     this.setState({contactStatus:true});
     this.setState({loginStatus:false});
     this.setState({signupStatus:false});
+    this.setState({footerStatus:false});
     
   }
   statusChangerHome=()=>{
@@ -39,6 +42,7 @@ class App extends Component {
     this.setState({contactStatus:false});
     this.setState({loginStatus:false});
     this.setState({signupStatus:false});
+    this.setState({footerStatus:true});
     
   }
   statusChangerLogin=()=>{
@@ -48,6 +52,7 @@ class App extends Component {
     this.setState({contactStatus:false});
     this.setState({loginStatus:true});
     this.setState({signupStatus:false});
+    this.setState({footerStatus:false});
   }
   statusChangerSignup=()=>{
     this.setState({firstImageStatus:false});
@@ -56,6 +61,7 @@ class App extends Component {
     this.setState({contactStatus:false});
     this.setState({loginStatus:false});
     this.setState({signupStatus:true});
+    this.setState({footerStatus:false});
   }
 
   statusChangerAbout=()=>{
@@ -65,6 +71,7 @@ class App extends Component {
     this.setState({contactStatus:false});
     this.setState({loginStatus:false});
     this.setState({signupStatus:false});
+    this.setState({footerStatus:false});
   }
   render(){
     return (
@@ -92,6 +99,7 @@ class App extends Component {
           <Route path='/signup'><Signup displayStatus={this.state.signupStatus} /></Route>
         </div>
         <Opprortunities displayStatus={this.state.opprortunitiesStatus} />
+        <Footer displayStatus={this.state.footerStatus}/>
       </Router>
     );
   }
