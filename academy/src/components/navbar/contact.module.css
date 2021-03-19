@@ -1,5 +1,16 @@
 .contact{
-    background-color: rgb(250, 246, 184);
+    text-align: center;
+}
+.contact::before{
+   content:''; 
+   background: center/cover no-repeat url('../../images/contact.jpeg');  
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+   left: 0px;
+   opacity: .2;
+   z-index: -1;
 }
 h3{
     padding: 10px;

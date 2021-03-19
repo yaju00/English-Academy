@@ -11,6 +11,8 @@ class Login extends Component{
                 password:'',
                 successStatus:false,
                 failureStatus:false,
+                errorStatus:false,
+                signupStatus:false,
         }
     }
   onChangeEmail=(e)=>{
@@ -29,29 +31,55 @@ class Login extends Component{
     console.log(email);
     axios.post('http://localhost:5000/',email)
     .then(res=>{
-        if(res.status===201){
-            this.setState({
+       if(res.data==='1'){
+        this.setState({
                 email:'',
                 password:'',
                 successStatus:true,
                 failureStatus:false,
-                
+                errorStatus:false,
+                signupStatus:false,
+                          
             })
-        }
-        else{
+       }
+       else if(res.data==='2'){
+        this.setState({
+            email:'',
+            password:'',
+            successStatus:false,
+            failureStatus:true,
+            errorStatus:false,
+            signupStatus:false,
+                      
+        })
+       }
+       else if(res.data==='3'){
+        this.setState({
+            email:'',
+            password:'',
+            successStatus:false,
+            failureStatus:false,
+            errorStatus:false,
+            signupStatus:true,
+                      
+        })
+       }
+    }
+    )
+    .catch(err=>{
+        console.log(err)
+        if(err){
             this.setState({
                 email:'',
                 password:'',
                 successStatus:false,
-                failureStatus:true,
-                
+                failureStatus:false,
+                errorStatus:true,
+                signupStatus:false,
+                          
             })
         }
-        
-    } ).catch(err=>console.log(`something went off ${err}`))
-
-   
-
+    })
   }
 
     render(){
@@ -78,6 +106,12 @@ class Login extends Component{
                 </div>
                 <div style={{display:this.state.failureStatus?'block':'none'}}>
                    <h3 style={{textAlign:'center'}}>Please enter valid details</h3>
+                </div>
+                <div style={{display:this.state.errorStatus?'block':'none'}}>
+                   <h3 style={{textAlign:'center'}}>Something went wrong</h3>
+                </div>
+                <div style={{display:this.state.signupStatus?'block':'none'}}>
+                   <h3 style={{textAlign:'center'}}>Please Signup First</h3>
                 </div>
             </div>
         )

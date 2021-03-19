@@ -11,14 +11,14 @@ router.route('/').post(async(req,res)=>{
    const user= await User.findOne({email:email});
    if(user!==null){
     if(user.password===password){
-        res.status(201).json('successfullogin')
+        res.status(201).json('1')
     }
     else{
-        res.json('invalid login details')
+        res.json('2')
     }
    }
-   else{
-    res.json('first register yourself')
+   else {
+    res.json('3')
    }
 })
 
@@ -39,8 +39,8 @@ router.route('/signup').post((req,res)=>{
 
     if(password===cpassword){
        newUser.save()
-       .then(()=>{res.json('signedup successfully')})
-        .catch(err=>{res.status(400).json(`${err}`)
+       .then(()=>{res.status(201).json('1')})
+        .catch(err=>{res.json(`2`)
     });
     }
     else{

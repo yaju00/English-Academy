@@ -6,5 +6,5 @@
 
 #signupbutton{
     margin-left: 50%;
-    transform: tr;
+    transform: translate(-50%,0);
 }
